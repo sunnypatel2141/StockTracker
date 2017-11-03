@@ -1,0 +1,15 @@
+.footer {
+   position:absolute;
+   bottom:0;
+   right:0;
+   padding: 10px;
+}
+
+p {
+	 display:inline;
+}
+
+#chartContainer {
+	height: 370px; 
+	width: 100%;
+}
