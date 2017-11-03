@@ -6,7 +6,11 @@
 }
 
 p {
-	 display:inline;
+	display:inline;
+}
+
+#demo {
+	display: block;
 }
 
 #chartContainer {
