@@ -9,21 +9,22 @@
 <body>
 	<h2>Stock Quotes</h2>
 
-	<p>Enter symbol of Equity: </p>
+	<p id="sameLine">Enter symbol of Equity: </p>
 
 	<input id="numb" placeholder="Equity Symbol">
 
 	<button type="button" onclick="chart()">Submit</button>
 	<button type="button" onclick="stopFunc()">Stop</button>
 
-	<p id="demo"></p>
+	<p id="updown"></p>
+	<p id="curStock"></p>
 
 	<script src="js/stocks.js">
 	</script>
 	
 	<div id="chartContainer"></div>
 </body>
-<footer class="footer">
+<footer>
 	Data by Alpha Vantage Inc. 2017
 </footer>
 </html>
