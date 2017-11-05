@@ -15,12 +15,18 @@ footer {
 
 #curStock {
 	display:inline;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 #chartContainer {
 	height:100%;
 	width: 100%;
+}
+
+#perc {
+	display:inline;
+	font-size: 18px;
+	color: purple;
 }
 
 body {
@@ -47,16 +53,17 @@ input {
 	display: block;
 }
 
-@media only screen and (min-width: 768px) {
+#perc {
+	padding-right: 50px;
+}
+
+@media only screen and (min-width: 1150px) {
     footer {
 		position:fixed;
 		bottom:0;
 		right:0;
-		padding-bottom: 25px;
-		padding-right: 25px;
+		padding-bottom: 10px;
+		padding-right: 10px;
 		display: inline;
-    }
-    body {
-    	padding-bottom: 50px;
     }
 }
