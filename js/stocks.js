@@ -82,8 +82,8 @@ function chart() {
 		alert('Error occured. Restart the page.');
 	});
 
-	document.getElementById('chartContainer').setAttribute("style", "height:60vh");
-	document.getElementsByTagName('body')[0].setAttribute("style", "height:80vh");
+	document.getElementById('chartContainer').setAttribute("style", "height:55vh");
+	document.getElementsByTagName('body')[0].setAttribute("style", "height:88vh");
 	//document.getElementsByTagName('footer')[0].setAttribute("style", "bottom:0; right:0; padding: 15px");
 
 	myFunction();
@@ -148,17 +148,19 @@ function myFunction() {
 
  	    document.getElementById("curStock").innerHTML = stockNow.toFixed(2);
 
- 	    var percChange, difference;
+ 	    var percChange, difference, percColor;
 	    var img = document.createElement("img");
 
 	    if (prevStock > stockNow) {
 			img.src = "down.gif";
 			var difference = prevStock - stockNow;
 			percChange = difference/prevStock;
+			percColor = "Red";
 	    } else if (prevStock < stockNow) {
 	    	img.src = "up.gif";
 	    	var difference = stockNow - prevStock;
 	    	percChange = difference/prevStock;
+	    	percColor = "Green";
 	    } else {
 
 	    }
@@ -169,10 +171,16 @@ function myFunction() {
 			firstTimeCallingMyFunction = true;
 		}
 
+		var datefull = chart.options.data[0].dataPoints[0].x;
+
+		document.getElementById("status").innerHTML = "NASDAQ: " + symbol + " - " + datefull;
+		document.getElementById('status').setAttribute("style", "color: grey");
 		document.getElementById("perc").innerHTML = difference.toFixed(2) + " (" + (percChange * 100).toFixed(2) + "%)";
+		document.getElementById('perc').setAttribute("style", "color: "+percColor);
 
 	    //latest entry
-	    chart.options.data[0].dataPoints[0].y = stockNow;
+	    //chart.options.data[0].dataPoints[0].y = 0;
+	    console.log("New Point: " + chart.options.data[0].dataPoints[0].y);
 		chart.render();
 	  });
 	}).catch(function(err) {
