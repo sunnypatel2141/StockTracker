@@ -2,6 +2,7 @@
 
 This application allows the user to enter equity symbols for NASDAQ-listed company and get real-time data on the stock quote of the company.  
 
-The default time is set to 2 minutes, which means the app will fetch data from https://www.alphavantage.co/ every 2 minutes.  
+There are three options to choose from: DAILY, WEEKLY, and MONTHLY. The data retrieved from each time period depends on Alpha Vantage as sometimes there are 50 points for MONTHLY retrieval for Company A and only 30 points for Company B.
 
-Note: CanvasJS library used to render chart.
+Data source: AlphaVantage.co   
+CanvasJS library used to render chart.
