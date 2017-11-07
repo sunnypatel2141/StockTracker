@@ -1,17 +1,22 @@
 // variables global
-var myMap = new Map();
+var myMap;
 var api = "0XUH5ZVKMA8NIJ2J";
-var chart, interval, url, timePeriod;
+var chart, interval, url, timePeriod, breaker;
 var firstTimeCallingMyFunction = false;
 
 function chartIt(str) {
 
+	myMap = new Map();
+
 	if (str == null) {
 		timePeriod = "TIME_SERIES_DAILY";
+		breaker = "Time Series (Daily)";
 	} else if (str == 'Weekly') {
 		timePeriod = "TIME_SERIES_WEEKLY";
+		breaker = "Weekly Time Series";
 	} else if (str == 'Monthly') {
 		timePeriod = "TIME_SERIES_MONTHLY";
+		breaker = "Monthly Time Series";
 	} else {
 		alert ('Invalid Choice!');
 		return;
@@ -49,13 +54,14 @@ function chartIt(str) {
 	        var str = JSON.stringify(data);
 	        var obj = JSON.parse(str);
 
-			var dailys = obj["Time Series (Daily)"];
+			var dailys = obj[breaker];
 
 			for(var prop in dailys) {
 				var keyString = prop;
 				var data = dailys[prop]["4. close"];
 
 				myMap.set(keyString, data);
+				console.log("Key " + keyString + " data " + data);
 			}
 
 			chart = new CanvasJS.Chart("chartContainer", {
@@ -67,7 +73,7 @@ function chartIt(str) {
 				axisX:{
 					title : "Date",
 					titleFontColor: "black",
-					valueFormatString: "DD MMM"
+					valueFormatString: formatDate(str)
 				},
 				axisY: {
 					title: "Stock Price",
@@ -79,7 +85,7 @@ function chartIt(str) {
 				},
 				data: [{
 					type: "line",
-					xValueFormatString: "DD MMM",
+					xValueFormatString: formatDateChart(str),
 					color: "green",
 					dataPoints: dataPoints(myMap)
 				}]
@@ -115,6 +121,20 @@ function dataPoints(myMap) {
 	return array;
 }
 
+function formatDate(str) {
+	if (str == null) {
+		return "DD MMM"
+	} 
+	return "MMM YYYY"
+}
+
+function formatDateChart(str) {
+	if (str == null) {
+		return "DD MMM"
+	} 
+	return "DD MM YYYY"
+}
+
 function myFunction() {
 
 	console.log("Fetching...");
@@ -122,8 +142,8 @@ function myFunction() {
 	// Get the value of the input field with id="numb"
 	symbol = document.getElementById("numb").value;
 
-	url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
-		+ symbol + "&interval=3600min&apikey=" + api; 
+	url = "https://www.alphavantage.co/query?function=" + timePeriod + "&symbol="
+		+ symbol + "&apikey=" + api; 
 
 	fetch(url, {method: 'get'
 	}).then(function(response) {
@@ -148,7 +168,7 @@ function myFunction() {
 	        	"4. close": "1028.1900",
 	            "5. volume": "266535"
 	    	} */
-	    var timeNowObj = obj["Time Series (Daily)"][time];
+	    var timeNowObj = obj[breaker][time];
 
 	    //"1028.1900"
 	    var stockNow = parseFloat(timeNowObj["4. close"]);
