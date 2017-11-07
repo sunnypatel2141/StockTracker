@@ -1,14 +1,21 @@
 // variables global
 var myMap = new Map();
 var api = "0XUH5ZVKMA8NIJ2J";
-var url; 
+var chart, interval, url, timePeriod;
 var firstTimeCallingMyFunction = false;
-var chart;
-var interval;
 
-function chart() {
+function chartIt(str) {
 
-	//https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo
+	if (str == null) {
+		timePeriod = "TIME_SERIES_DAILY";
+	} else if (str == 'Weekly') {
+		timePeriod = "TIME_SERIES_WEEKLY";
+	} else if (str == 'Monthly') {
+		timePeriod = "TIME_SERIES_MONTHLY";
+	} else {
+		alert ('Invalid Choice!');
+		return;
+	}
 
 	var symbol = document.getElementById("numb").value;
 
@@ -27,7 +34,7 @@ function chart() {
 		return;
 	}
 
-	url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
+	url = "https://www.alphavantage.co/query?function=" + timePeriod + "&symbol="
 		+ symbol + "&apikey=" + api; 
 
 	console.log(url);

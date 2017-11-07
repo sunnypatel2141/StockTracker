@@ -13,8 +13,8 @@
 
 	<input id="numb" placeholder="Equity Symbol">
 
-	<button type="button" onclick="chart()">Submit</button>
-	<button type="button" onclick="stopFunc()">Stop</button>
+	<!-- <button type="button" onclick="chart()">Submit</button> -->
+	<!-- <button type="button" onclick="stopFunc()">Stop</button> -->
 
 	<p></p>
 
@@ -26,8 +26,15 @@
 
 	<script src="js/stocks.js">
 	</script>
-	
+
+	<div class="tab">
+		<button class="tablinks" onclick="chartIt();">Daily</button>
+		<button class="tablinks" onclick="chartIt('Weekly');">Weekly</button>
+		<button class="tablinks" onclick="chartIt('Monthly');">Monthly</button>
+	</div>
+
 	<div id="chartContainer"></div>
+
 </body>
 <footer>
 	Data by Alpha Vantage Inc. 2017
