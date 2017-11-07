@@ -8,6 +8,8 @@ var interval;
 
 function chart() {
 
+	//https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo
+
 	var symbol = document.getElementById("numb").value;
 
 	//search and replace replace symbol with company name
@@ -26,7 +28,7 @@ function chart() {
 	}
 
 	url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
-		+ symbol + "&interval=3600min&apikey=" + api; 
+		+ symbol + "&apikey=" + api; 
 
 	console.log(url);
 
