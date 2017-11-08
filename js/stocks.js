@@ -6,17 +6,24 @@ var firstTimeCallingMyFunction = false;
 
 function chartIt(str) {
 
+	document.getElementById("tablinks_daily").setAttribute("style", "background-color: inherit");
+	document.getElementById("tablinks_weekly").setAttribute("style", "background-color: inherit");
+	document.getElementById("tablinks_monthly").setAttribute("style", "background-color: inherit");
+
 	myMap = new Map();
 
 	if (str == null) {
 		timePeriod = "TIME_SERIES_DAILY";
 		breaker = "Time Series (Daily)";
+		document.getElementById("tablinks_daily").setAttribute("style", "background-color: #ccc");
 	} else if (str == 'Weekly') {
 		timePeriod = "TIME_SERIES_WEEKLY";
 		breaker = "Weekly Time Series";
+		document.getElementById("tablinks_weekly").setAttribute("style", "background-color: #ccc");
 	} else if (str == 'Monthly') {
 		timePeriod = "TIME_SERIES_MONTHLY";
 		breaker = "Monthly Time Series";
+		document.getElementById("tablinks_monthly").setAttribute("style", "background-color: #ccc");
 	} else {
 		alert ('Invalid Choice!');
 		return;
