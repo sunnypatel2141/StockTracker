@@ -91,7 +91,7 @@ function chartIt(str) {
 				}]
 			});
 		
-			chart.render();	
+			// chart.render();	
 		});
 	}).catch(function(err) {
 		alert('Error occured. Restart the page.');
@@ -175,8 +175,6 @@ function myFunction() {
 
 	    var prevStock = parseFloat(chart.options.data[0].dataPoints[1].y);
 
- 	    document.getElementById("curStock").innerHTML = stockNow.toFixed(2);
-
  	    var percChange, difference, percColor;
 	    var img = document.createElement("img");
 
@@ -202,10 +200,16 @@ function myFunction() {
 
 		var datefull = chart.options.data[0].dataPoints[0].x;
 
-		document.getElementById("status").innerHTML = "NASDAQ: " + symbol + " - " + datefull;
-		document.getElementById('status').setAttribute("style", "color: grey");
+		document.getElementById("curStock").innerHTML = stockNow.toFixed(2);
+		document.getElementById('curStock').setAttribute("style", "display: inline");
+
+		document.getElementById('updown').setAttribute("style", "display: inline; color: white");
+
+		document.getElementById("status").innerHTML = "NASDAQ: " + symbol + " - " + datefull + "</br>";
+		document.getElementById('status').setAttribute("style", "display: inline; color: white");
+
 		document.getElementById("perc").innerHTML = difference.toFixed(2) + " (" + (percChange * 100).toFixed(2) + "%)";
-		document.getElementById('perc').setAttribute("style", "color: "+percColor);
+		document.getElementById('perc').setAttribute("style", "display: inline; font-weight: bolder; color: "+percColor);
 
 	    //latest entry
 	    //chart.options.data[0].dataPoints[0].y = 0;
