@@ -68,7 +68,7 @@ function chartIt(str) {
 				var data = dailys[prop]["4. close"];
 
 				myMap.set(keyString, data);
-				console.log("Key " + keyString + " data " + data);
+				//console.log("Key " + keyString + " data " + data);
 			}
 
 			chart = new CanvasJS.Chart("chartContainer", {
@@ -163,7 +163,7 @@ function myFunction() {
 
 	    //"2017-11-03 13:07:00" or "2017-11-03"
 	    if (hasWhiteSpace(obj["Meta Data"]["3. Last Refreshed"])) {
-	    	var time = obj["Meta Data"]["3. Last Refreshed"].split(" ");	
+	    	var time = obj["Meta Data"]["3. Last Refreshed"].split(" ")[0];	
 	    } else {
 	        var time = obj["Meta Data"]["3. Last Refreshed"];
 	    }
@@ -176,6 +176,10 @@ function myFunction() {
 	            "5. volume": "266535"
 	    	} */
 	    var timeNowObj = obj[breaker][time];
+
+	    console.log(timeNowObj);
+	    console.log(breaker);
+	    console.log(time);
 
 	    //"1028.1900"
 	    var stockNow = parseFloat(timeNowObj["4. close"]);
