@@ -177,10 +177,6 @@ function myFunction() {
 	    	} */
 	    var timeNowObj = obj[breaker][time];
 
-	    console.log(timeNowObj);
-	    console.log(breaker);
-	    console.log(time);
-
 	    //"1028.1900"
 	    var stockNow = parseFloat(timeNowObj["4. close"]);
 
