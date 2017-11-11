@@ -183,7 +183,20 @@ function myFunction() {
 	    var prevStock = parseFloat(chart.options.data[0].dataPoints[1].y);
 
  	    var percChange, difference, percColor;
-	    var img = document.createElement("img");
+	    if (!firstTimeCallingMyFunction) {
+			var img = document.createElement("img");
+			img.setAttribute("id", "imggif");
+		    var src = document.getElementById("updown");
+			src.appendChild(img);
+			firstTimeCallingMyFunction = true;
+		} else {			
+			var img = document.getElementById("imggif")
+			var src = document.getElementById("updown");
+			src.removeChild(img);
+			var img = document.createElement("img");
+			img.setAttribute("id", "imggif");
+			src.appendChild(img);		
+		}
 
 	    if (prevStock > stockNow) {
 			img.src = "down.gif";
@@ -198,12 +211,6 @@ function myFunction() {
 	    } else {
 
 	    }
-
-	    if (!firstTimeCallingMyFunction) {
-		    var src = document.getElementById("updown");
-			src.appendChild(img);
-			firstTimeCallingMyFunction = true;
-		}
 
 		var datefull = chart.options.data[0].dataPoints[0].x;
 
